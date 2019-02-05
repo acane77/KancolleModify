@@ -54,6 +54,8 @@ namespace KancolleModify
                     frmPreview.Location = new Point(this.Location.X + this.Size.Width - 5, this.Location.Y);
                 }
             };
+
+            txtKanmusuID.LostFocus += btnPreview_Click;
         }
 
         private string LoadConfig(string item)

@@ -50,8 +50,18 @@ namespace KancolleModify
                 this.Show();
         }
 
+        private void DisposeImage()
+        {
+            if (Preview.Image == null)
+                return;
+            Image image = Preview.Image;
+            Preview.Image = null;
+            image.Dispose();
+        }
+
         private void Preview_Click(object sender, EventArgs e)
         {
+            DisposeImage();
             this.Hide();
         }
     }
