@@ -731,7 +731,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(31, 121);
+            this.label24.Location = new System.Drawing.Point(31, 151);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(61, 17);
             this.label24.TabIndex = 22;
@@ -741,9 +741,9 @@
             // 
             this.RemodelDmg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.RemodelDmg.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.RemodelDmg.Location = new System.Drawing.Point(34, 141);
+            this.RemodelDmg.Location = new System.Drawing.Point(34, 171);
             this.RemodelDmg.Name = "RemodelDmg";
-            this.RemodelDmg.Size = new System.Drawing.Size(559, 66);
+            this.RemodelDmg.Size = new System.Drawing.Size(559, 101);
             this.RemodelDmg.TabIndex = 21;
             this.RemodelDmg.TabStop = false;
             // 
@@ -762,7 +762,7 @@
             this.RemodelNormal.Cursor = System.Windows.Forms.Cursors.Hand;
             this.RemodelNormal.Location = new System.Drawing.Point(34, 37);
             this.RemodelNormal.Name = "RemodelNormal";
-            this.RemodelNormal.Size = new System.Drawing.Size(559, 66);
+            this.RemodelNormal.Size = new System.Drawing.Size(559, 101);
             this.RemodelNormal.TabIndex = 19;
             this.RemodelNormal.TabStop = false;
             // 
