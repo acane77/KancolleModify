@@ -46,6 +46,14 @@ namespace KancolleModify
             LoadConfig();
             ShimakazeGoCachePath = LoadConfig(Config.Meta.ShimakazeGoCachePath);
             ACGPowerCachePath = LoadConfig(Config.Meta.ACGPowerCachePath);
+
+            LocationChanged += (object s, EventArgs ee) =>
+            {
+                if (frmPreview != null && frmPreview.Visible && !frmPreview.IsDisposed)
+                {
+                    frmPreview.Location = new Point(this.Location.X + this.Size.Width - 5, this.Location.Y);
+                }
+            };
         }
 
         private string LoadConfig(string item)
@@ -411,6 +419,28 @@ namespace KancolleModify
             ClearAllPictureBoxes();
         }
 
-        
+        private void cbTool_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Config.CachePath = new string[]
+            {
+                Config.ShimakazeGoCachePath, Config.ACGPowerCachePath
+            }[cbTool.SelectedIndex];
+        }
+
+        FrmPreview frmPreview = null;
+
+        private void btnPreview_Click(object sender, EventArgs e)
+        {
+            if (frmPreview == null || frmPreview.IsDisposed)
+                frmPreview = new FrmPreview();
+            frmPreview.LoadKanmusuCardPreview(txtKanmusuID.Text);
+            frmPreview.StartPosition = FormStartPosition.Manual;
+            if (!frmPreview.Visible)
+            {
+                frmPreview.Location = new Point(this.Location.X + this.Size.Width-5, this.Location.Y);
+            }
+            frmPreview.ConditionalShow();
+            this.Focus();
+        }
     }
 }

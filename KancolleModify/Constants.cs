@@ -8,6 +8,6 @@ namespace KancolleModify
 {
     class Constants
     {
-        
+        public const string ShipRelativePath = @"\kcs2\resources\ship\";
     }
 }

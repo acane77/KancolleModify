@@ -49,7 +49,7 @@ namespace KancolleModify
         public string CachePath = Config.ShimakazeGoCachePath;
         public string ShipCachePath
         {
-            get => CachePath + @"\kcs2\resources\ship\";
+            get => CachePath + Constants.ShipRelativePath;
         }
         string Ext = ".png";
         string ExtReplaceAs = ".hack.png";

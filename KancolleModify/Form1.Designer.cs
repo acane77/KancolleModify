@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnReset = new System.Windows.Forms.Button();
             this.btnLoadConfig = new System.Windows.Forms.Button();
             this.btnSaveConfig = new System.Windows.Forms.Button();
             this.btnClearFleet = new System.Windows.Forms.Button();
@@ -106,7 +107,7 @@
             this.openDir = new System.Windows.Forms.FolderBrowserDialog();
             this.openIni = new System.Windows.Forms.OpenFileDialog();
             this.saveIni = new System.Windows.Forms.SaveFileDialog();
-            this.btnReset = new System.Windows.Forms.Button();
+            this.btnPreview = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabResTypes.SuspendLayout();
@@ -152,6 +153,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnPreview);
             this.tabPage1.Controls.Add(this.btnReset);
             this.tabPage1.Controls.Add(this.btnLoadConfig);
             this.tabPage1.Controls.Add(this.btnSaveConfig);
@@ -174,9 +176,19 @@
             this.tabPage1.Text = "保存魔改文件到目录";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(556, 55);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(89, 26);
+            this.btnReset.TabIndex = 27;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // btnLoadConfig
             // 
-            this.btnLoadConfig.Location = new System.Drawing.Point(358, 55);
+            this.btnLoadConfig.Location = new System.Drawing.Point(461, 55);
             this.btnLoadConfig.Name = "btnLoadConfig";
             this.btnLoadConfig.Size = new System.Drawing.Size(89, 26);
             this.btnLoadConfig.TabIndex = 26;
@@ -186,7 +198,7 @@
             // 
             // btnSaveConfig
             // 
-            this.btnSaveConfig.Location = new System.Drawing.Point(263, 55);
+            this.btnSaveConfig.Location = new System.Drawing.Point(366, 55);
             this.btnSaveConfig.Name = "btnSaveConfig";
             this.btnSaveConfig.Size = new System.Drawing.Size(89, 26);
             this.btnSaveConfig.TabIndex = 25;
@@ -902,6 +914,7 @@
             this.cbTool.Name = "cbTool";
             this.cbTool.Size = new System.Drawing.Size(438, 25);
             this.cbTool.TabIndex = 2;
+            this.cbTool.SelectedIndexChanged += new System.EventHandler(this.cbTool_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -924,15 +937,15 @@
             // 
             this.saveIni.Filter = "配置文件|*.ini";
             // 
-            // btnReset
+            // btnPreview
             // 
-            this.btnReset.Location = new System.Drawing.Point(453, 55);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(89, 26);
-            this.btnReset.TabIndex = 27;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.btnPreview.Location = new System.Drawing.Point(263, 55);
+            this.btnPreview.Name = "btnPreview";
+            this.btnPreview.Size = new System.Drawing.Size(89, 26);
+            this.btnPreview.TabIndex = 28;
+            this.btnPreview.Text = "Preview";
+            this.btnPreview.UseVisualStyleBackColor = true;
+            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
             // Form1
             // 
@@ -940,6 +953,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(687, 498);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
@@ -1070,6 +1084,7 @@
         private System.Windows.Forms.OpenFileDialog openIni;
         private System.Windows.Forms.SaveFileDialog saveIni;
         private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Button btnPreview;
     }
 }
 

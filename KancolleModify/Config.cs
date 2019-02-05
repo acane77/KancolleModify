@@ -78,6 +78,7 @@ namespace KancolleModify
 
         public static string ShimakazeGoCachePath = "";
         public static string ACGPowerCachePath = "";
+        public static string CachePath = "";
 
         public static IniConfigLoader Configure;
 
