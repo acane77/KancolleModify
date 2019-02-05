@@ -31,7 +31,6 @@ namespace KancolleModify
                     RegisterPictureBoxClickEvent(ctrl, ctrl.Name);
                     PictureBox pic = (PictureBox)ctrl;
                     pic.BackgroundImageLayout = ImageLayout.Zoom;
-                    pic.SizeMode = PictureBoxSizeMode.Zoom;
                     pic.BackColor = SystemColors.Control;
                     pic.MouseEnter += (object s, EventArgs ee) => { pic.BackColor = Color.Pink; };
                     pic.MouseLeave += (object s, EventArgs ee) => { pic.BackColor = SystemColors.Control; };
@@ -156,6 +155,8 @@ namespace KancolleModify
             {
                 Image image = Image.FromFile(openImage.FileName);
                 image.Tag = openImage.FileName;
+                if (pictureBox.BackgroundImage != null)
+                    pictureBox.BackgroundImage.Dispose();
                 pictureBox.BackgroundImage = image; 
                 pictureBox.BackgroundImageLayout = ImageLayout.Zoom;
             }
@@ -377,8 +378,10 @@ namespace KancolleModify
                             string pname = conf[name];
                             Image image = Image.FromFile(pname);
                             image.Tag = pname;
+                            if (pic.BackgroundImage != null)
+                                pic.BackgroundImage.Dispose();
                             pic.BackgroundImage = image;
-                            pic.BackgroundImageLayout = ImageLayout.Stretch;
+                            pic.BackgroundImageLayout = ImageLayout.Zoom;
                         }
                         catch (Exception ee)
                         {
