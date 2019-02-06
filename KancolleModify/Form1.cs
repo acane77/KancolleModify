@@ -458,8 +458,19 @@ namespace KancolleModify
 
         private void btnEditPortVDPos_Click(object sender, EventArgs e)
         {
-            FrmUIEdit frmUIEdit = new FrmUIEdit();
-            frmUIEdit.Show();
+            try
+            {
+                FrmUIEdit frmUIEdit = new FrmUIEdit();
+                frmUIEdit.VertialDrawingSense = (VertialDrawingSenses)cbIniPosEditContent.SelectedIndex;
+                frmUIEdit.NormalVD = (Image)VertDrawingNormal.BackgroundImage?.Clone();
+                frmUIEdit.DamageVD = (Image)VertDrawingDmg.BackgroundImage?.Clone();
+                frmUIEdit.CheckArguments();
+                frmUIEdit.Show();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
