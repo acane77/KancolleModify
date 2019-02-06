@@ -19,7 +19,7 @@ namespace KancolleModify
             if (VDInfo == null)
             {
                 VDInfo = new Dictionary<VertialDrawingSenses, VDAttributes>();
-                VDInfo.Add(VertialDrawingSenses.Port, new VDAttributes(KancolleModify.Properties.Resources.port.GetHbitmap(), "boko", new Point((int)(491*(2.0 / 3.0)), (int)(-88*(2.0 / 3.0))), (2.0 / 3.0)));
+                VDInfo.Add(VertialDrawingSenses.Port, new VDAttributes(KancolleModify.Properties.Resources.port.GetHbitmap(), "boko", new Point(491, -88), (2.0 / 3.0)));
                 //ImageResources.Add(VertialDrawingSenses.InBattle, new VDAttributes(KancolleModify.Properties.Resources.port.GetHbitmap(), "battle", Point.Empty));
                 //ImageResources.Add(VertialDrawingSenses.Map, new VDAttributes(KancolleModify.Properties.Resources.port.GetHbitmap(), "map", Point.Empty));
                 //ImageResources.Add(VertialDrawingSenses.Exercise, new VDAttributes(KancolleModify.Properties.Resources.port.GetHbitmap(), "ensyuf", Point.Empty));
@@ -97,7 +97,7 @@ namespace KancolleModify
             {
                 BackgroundImage = backgroundImage;
                 ConfigStringPrefix = configStringPrefix;
-                BasePosition = basePosition;
+                BasePosition = new Point((int)(basePosition.X * zoomScale), (int)(basePosition.Y * zoomScale));
                 ZoomScale = zoomScale;
             }
         }
