@@ -20,10 +20,10 @@ namespace KancolleModify
             {
                 VDInfo = new Dictionary<VertialDrawingSenses, VDAttributes>();
                 VDInfo.Add(VertialDrawingSenses.Port, new VDAttributes(KancolleModify.Properties.Resources.port.GetHbitmap(), "boko", new Point(491, -88), (2.0 / 3.0)));
-                VDInfo.Add(VertialDrawingSenses.InBattle, new VDAttributes(KancolleModify.Properties.Resources.battle.GetHbitmap(), "battle", Point.Empty, (2.0 / 3.0)));
-                VDInfo.Add(VertialDrawingSenses.Map, new VDAttributes(KancolleModify.Properties.Resources.map_main.GetHbitmap(), "map", Point.Empty, (2.0 / 3.0)));
-                VDInfo.Add(VertialDrawingSenses.Exercise, new VDAttributes(KancolleModify.Properties.Resources.exercise.GetHbitmap(), "ensyuf", Point.Empty, (2.0 / 3.0)));
-                VDInfo.Add(VertialDrawingSenses.Modernization, new VDAttributes(KancolleModify.Properties.Resources.remodel.GetHbitmap(), "kaisyu", Point.Empty, (2.0 / 3.0)));
+                VDInfo.Add(VertialDrawingSenses.InBattle, new VDAttributes(KancolleModify.Properties.Resources.battle.GetHbitmap(), "battle", new Point(13, 46), (2.0 / 3.0)));
+                VDInfo.Add(VertialDrawingSenses.Map, new VDAttributes(KancolleModify.Properties.Resources.map_main.GetHbitmap(), "map", new Point(-108, -2), (2.0 / 3.0)));
+                VDInfo.Add(VertialDrawingSenses.Exercise, new VDAttributes(KancolleModify.Properties.Resources.exercise.GetHbitmap(), "ensyuf", new Point(-46, 31), (2.0 / 3.0)));
+                VDInfo.Add(VertialDrawingSenses.Modernization, new VDAttributes(KancolleModify.Properties.Resources.remodel.GetHbitmap(), "kaisyu", new Point(213, -61), (2.0 / 3.0)));
                 VDInfo.Add(VertialDrawingSenses.Remodel, new VDAttributes(KancolleModify.Properties.Resources.remodel.GetHbitmap(), "kaizo", Point.Empty, (2.0 / 3.0)));
             }
 
