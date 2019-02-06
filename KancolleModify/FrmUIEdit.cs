@@ -22,7 +22,7 @@ namespace KancolleModify
                 VDInfo.Add(VertialDrawingSenses.Port, new VDAttributes(KancolleModify.Properties.Resources.port.GetHbitmap(), "boko", new Point(491, -88), (2.0 / 3.0)));
                 VDInfo.Add(VertialDrawingSenses.InBattle, new VDAttributes(KancolleModify.Properties.Resources.battle.GetHbitmap(), "battle", Point.Empty, (2.0 / 3.0)));
                 VDInfo.Add(VertialDrawingSenses.Map, new VDAttributes(KancolleModify.Properties.Resources.map_main.GetHbitmap(), "map", Point.Empty, (2.0 / 3.0)));
-                //ImageResources.Add(VertialDrawingSenses.Exercise, new VDAttributes(KancolleModify.Properties.Resources.port.GetHbitmap(), "ensyuf", Point.Empty));
+                VDInfo.Add(VertialDrawingSenses.Exercise, new VDAttributes(KancolleModify.Properties.Resources.exercise.GetHbitmap(), "ensyuf", Point.Empty, (2.0 / 3.0)));
                 VDInfo.Add(VertialDrawingSenses.Modernization, new VDAttributes(KancolleModify.Properties.Resources.remodel.GetHbitmap(), "kaisyu", Point.Empty, (2.0 / 3.0)));
                 VDInfo.Add(VertialDrawingSenses.Remodel, new VDAttributes(KancolleModify.Properties.Resources.remodel.GetHbitmap(), "kaizo", Point.Empty, (2.0 / 3.0)));
             }
@@ -129,6 +129,8 @@ namespace KancolleModify
             cbIniPosEditContent.SelectedIndex = (int)VertialDrawingSense;
 
             LoadPositionFromConfig();
+
+            cbVDStatus.SelectedIndex = 0;
         }
 
         Image _BackgroudImage = null;

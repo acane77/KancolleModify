@@ -71,6 +71,16 @@ namespace KancolleModify.Properties {
         }
         
         /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap exercise {
+            get {
+                object obj = ResourceManager.GetObject("exercise", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   查找 System.Byte[] 类型的本地化资源。
         /// </summary>
         public static byte[] map_bottom_banner {
