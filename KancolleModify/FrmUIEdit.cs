@@ -16,16 +16,7 @@ namespace KancolleModify
         {
             InitializeComponent();
 
-            if (VDInfo == null)
-            {
-                VDInfo = new Dictionary<VertialDrawingSenses, VDAttributes>();
-                VDInfo.Add(VertialDrawingSenses.Port, new VDAttributes(KancolleModify.Properties.Resources.port.GetHbitmap(), "boko", new Point(491, -88), (2.0 / 3.0)));
-                VDInfo.Add(VertialDrawingSenses.InBattle, new VDAttributes(KancolleModify.Properties.Resources.battle.GetHbitmap(), "battle", new Point(13, 46), (2.0 / 3.0)));
-                VDInfo.Add(VertialDrawingSenses.Map, new VDAttributes(KancolleModify.Properties.Resources.map_main.GetHbitmap(), "map", new Point(-108, -2), (2.0 / 3.0)));
-                VDInfo.Add(VertialDrawingSenses.Exercise, new VDAttributes(KancolleModify.Properties.Resources.exercise.GetHbitmap(), "ensyuf", new Point(-46, 31), (2.0 / 3.0)));
-                VDInfo.Add(VertialDrawingSenses.Modernization, new VDAttributes(KancolleModify.Properties.Resources.remodel.GetHbitmap(), "kaisyu", new Point(213, -61), (2.0 / 3.0)));
-                VDInfo.Add(VertialDrawingSenses.Remodel, new VDAttributes(KancolleModify.Properties.Resources.remodel.GetHbitmap(), "kaizo", Point.Empty, (2.0 / 3.0)));
-            }
+            InitVDInfo();
 
             numPosLeft.ValueChanged += (s, ee) =>
             {
@@ -52,6 +43,20 @@ namespace KancolleModify
         private bool IsMouseDown = false;
         Point LastMouseMovePoint;
         int DeltaX = 0, DeltaY = 0;
+
+        public static void InitVDInfo()
+        {
+            if (VDInfo == null)
+            {
+                VDInfo = new Dictionary<VertialDrawingSenses, VDAttributes>();
+                VDInfo.Add(VertialDrawingSenses.Port, new VDAttributes(KancolleModify.Properties.Resources.port.GetHbitmap(), "boko", new Point(491, -88), (2.0 / 3.0)));
+                VDInfo.Add(VertialDrawingSenses.InBattle, new VDAttributes(KancolleModify.Properties.Resources.battle.GetHbitmap(), "battle", new Point(13, 46), (2.0 / 3.0)));
+                VDInfo.Add(VertialDrawingSenses.Map, new VDAttributes(KancolleModify.Properties.Resources.map_main.GetHbitmap(), "map", new Point(-108, -2), (2.0 / 3.0)));
+                VDInfo.Add(VertialDrawingSenses.Exercise, new VDAttributes(KancolleModify.Properties.Resources.exercise.GetHbitmap(), "ensyuf", new Point(-46, 31), (2.0 / 3.0)));
+                VDInfo.Add(VertialDrawingSenses.Modernization, new VDAttributes(KancolleModify.Properties.Resources.remodel.GetHbitmap(), "kaisyu", new Point(213, -61), (2.0 / 3.0)));
+                VDInfo.Add(VertialDrawingSenses.Remodel, new VDAttributes(KancolleModify.Properties.Resources.remodel.GetHbitmap(), "kaizo", Point.Empty, (2.0 / 3.0)));
+            }
+        }
 
         private void PanelEdit_MouseMove(object sender, MouseEventArgs e)
         {
@@ -119,7 +124,7 @@ namespace KancolleModify
         private List<AddtionalImage> AdditionalImages = new List<AddtionalImage>();
         private List<AddtionalImage> AdditionalImagesOver = new List<AddtionalImage>();
 
-        private static Dictionary<VertialDrawingSenses, VDAttributes> VDInfo = null;
+        public static Dictionary<VertialDrawingSenses, VDAttributes> VDInfo = null;
 
         //public string CurrentEdit
 

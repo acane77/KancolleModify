@@ -14,6 +14,12 @@ namespace KancolleModify
         
         string part = DEFAULT_PART;
         Dictionary<string, string> configs = new Dictionary<string, string>();
+
+        public IniConfigLoader()
+        {
+
+        }
+
         public IniConfigLoader(string path)
         {
             string[] lines = null;
@@ -67,6 +73,26 @@ namespace KancolleModify
             configs[key] = value;
         }
 
+        public void SetValue(string path, string name, string value)
+        {
+            SetValue(path + "." + name, value);
+        }
+
+        public bool ContainsKey(string part, string name)
+        {
+            return configs.ContainsKey(part + "." + name);
+        }
+
+        public bool Remove(string part, string name)
+        {
+            return configs.Remove(part + "." + name);
+        }
+
+        public void Clear()
+        {
+            configs.Clear();
+        }
+
         private string WriteGroup(string partName, Dictionary<string, string> dict)
         {
             string content = "";
@@ -95,7 +121,7 @@ namespace KancolleModify
             return conf;
         }
 
-        public void Write(string path)
+        public override string ToString()
         {
             Dictionary<string, Dictionary<string, string>> dict = new Dictionary<string, Dictionary<string, string>>();
 
@@ -123,7 +149,12 @@ namespace KancolleModify
                 content += WriteGroup(pair.Key, pair.Value);
             }
 
-            File.WriteAllText(path, content);
+            return content;
+        }
+
+        public void Write(string path)
+        {
+            File.WriteAllText(path, this.ToString());
         }
     }
 }

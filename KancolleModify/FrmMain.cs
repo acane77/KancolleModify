@@ -486,5 +486,93 @@ namespace KancolleModify
                 frm.AddAdditionalImageOver(Utils.GetImageFromByteArray(KancolleModify.Properties.Resources.map_bottom_banner), new Point(0, 293), new Size(800, 187)); ;
             }
         }
+
+        double FindScaleFromConfigName(string name)
+        {
+            FrmUIEdit.InitVDInfo();
+            foreach (var pair in FrmUIEdit.VDInfo)
+            {
+                string prefix = pair.Value.ConfigStringPrefix;
+                if (name.Contains(prefix))
+                    return pair.Value.ZoomScale;
+            }
+            return 1.0;
+        }
+
+        IniConfigLoader GetIniLoader()
+        {
+            var C = Config.ConfigIni;
+            IniConfigLoader iniLoader = new IniConfigLoader();
+            foreach (var pair in C)
+            {
+                if (pair.Key.Contains("."))
+                {
+                    iniLoader.SetValue(pair.Key, pair.Value);
+                    continue;
+                }
+                iniLoader.SetValue("graph", pair.Key, ((int)(Int32.Parse(pair.Value) / FindScaleFromConfigName(pair.Key))).ToString());
+            }
+            return iniLoader;
+        }
+
+        private void btnIniPreview_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(GetIniLoader().ToString());
+        }
+
+        private void btnIniSave_Click(object sender, EventArgs e)
+        {
+            saveIni.FileName = txtIniFileName.Text;
+            DialogResult result = saveIni.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                GetIniLoader().Write(saveIni.FileName);
+            }
+        }
+
+        private void btnIniLoadConfig_Click(object sender, EventArgs e)
+        {
+            Config.ConfigIni.Clear();
+            try
+            {
+                if (openIni.ShowDialog() != DialogResult.OK)
+                    return;
+                txtIniFileName.Text = Path.GetFileName(openIni.FileName);
+                IniConfigLoader iniConfig = new IniConfigLoader(openIni.FileName);
+                Dictionary<string, string> group = iniConfig.GetConfigByGroupName("graph");
+                foreach (var pair in group)
+                {
+                    try
+                    {
+                        int x = (int)(Int32.Parse(pair.Value) * FindScaleFromConfigName(pair.Key));
+                        Config.ConfigIni[pair.Key] = x.ToString();
+                    }
+                    catch (Exception ee)
+                    {
+                        MessageBox.Show("配置项 " + pair.Key + " = " + pair.Value + "\r\n\r\n" + ee.Message);
+                    }
+                }
+
+                if (iniConfig.ContainsKey("info", "ship_name"))
+                    txtConfigKanmusuName.Text = iniConfig.GetValue("info", "ship_name");
+            }
+            catch { }
+        }
+
+        private void txtConfigKanmusuName_TextChanged(object sender, EventArgs e)
+        {
+            if (txtConfigKanmusuName.Text.Length == 0)
+            {
+                if (Config.ConfigIni.ContainsKey("info.ship_name"))
+                    Config.ConfigIni.Remove("info.ship_name");
+                return;
+            }
+            Config.ConfigIni["info.ship_name"] = txtConfigKanmusuName.Text;
+        }
+
+        private void btnTxtIniFileNameHelp_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("此文件名为 [xxx].config.ini，[xxx]为舰娘的名称代码。该名称代码可以通过岛风Go的[战舰表]搜索得到，请查询后填入此处。\r\n\r\n保存位置为 [缓存目录]\\kcs\\resources\\swf\\ship\\", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
