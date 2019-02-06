@@ -80,6 +80,12 @@
     <Compile Include="FrmStartModify.Designer.cs">
       <DependentUpon>FrmStartModify.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmUIEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUIEdit.Designer.cs">
+      <DependentUpon>FrmUIEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="IniConfigLoader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -95,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmStartModify.resx">
       <DependentUpon>FrmStartModify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUIEdit.resx">
+      <DependentUpon>FrmUIEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

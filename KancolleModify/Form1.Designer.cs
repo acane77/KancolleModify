@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnPreview = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnLoadConfig = new System.Windows.Forms.Button();
             this.btnSaveConfig = new System.Windows.Forms.Button();
@@ -90,13 +91,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.RemodelNormal = new System.Windows.Forms.PictureBox();
             this.tabPage9 = new System.Windows.Forms.TabPage();
-            this.cbLinkPoses = new System.Windows.Forms.CheckBox();
-            this.btnEditEqipVDPos = new System.Windows.Forms.Button();
-            this.btnEditExerciseVDPos = new System.Windows.Forms.Button();
-            this.btnEditMapVDPos = new System.Windows.Forms.Button();
-            this.btnEditRemodelVDPos = new System.Windows.Forms.Button();
-            this.btnEditBattleVDPos = new System.Windows.Forms.Button();
-            this.btnEditPortVDPos = new System.Windows.Forms.Button();
+            this.btnIniPosEdit = new System.Windows.Forms.Button();
             this.txtConfigKanmusuName = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -107,7 +102,13 @@
             this.openDir = new System.Windows.Forms.FolderBrowserDialog();
             this.openIni = new System.Windows.Forms.OpenFileDialog();
             this.saveIni = new System.Windows.Forms.SaveFileDialog();
-            this.btnPreview = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbIniPosEditContent = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtIniFileName = new System.Windows.Forms.TextBox();
+            this.btnIniSave = new System.Windows.Forms.Button();
+            this.btnTxtIniFileNameHelp = new System.Windows.Forms.Button();
+            this.btnIniPreview = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabResTypes.SuspendLayout();
@@ -139,6 +140,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.RemodelNormal)).BeginInit();
             this.tabPage9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -175,6 +177,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "保存魔改文件到目录";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnPreview
+            // 
+            this.btnPreview.Location = new System.Drawing.Point(263, 55);
+            this.btnPreview.Name = "btnPreview";
+            this.btnPreview.Size = new System.Drawing.Size(89, 26);
+            this.btnPreview.TabIndex = 28;
+            this.btnPreview.Text = "Preview";
+            this.btnPreview.UseVisualStyleBackColor = true;
+            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
             // btnReset
             // 
@@ -780,13 +792,12 @@
             // 
             // tabPage9
             // 
-            this.tabPage9.Controls.Add(this.cbLinkPoses);
-            this.tabPage9.Controls.Add(this.btnEditEqipVDPos);
-            this.tabPage9.Controls.Add(this.btnEditExerciseVDPos);
-            this.tabPage9.Controls.Add(this.btnEditMapVDPos);
-            this.tabPage9.Controls.Add(this.btnEditRemodelVDPos);
-            this.tabPage9.Controls.Add(this.btnEditBattleVDPos);
-            this.tabPage9.Controls.Add(this.btnEditPortVDPos);
+            this.tabPage9.Controls.Add(this.btnIniPreview);
+            this.tabPage9.Controls.Add(this.btnTxtIniFileNameHelp);
+            this.tabPage9.Controls.Add(this.btnIniSave);
+            this.tabPage9.Controls.Add(this.txtIniFileName);
+            this.tabPage9.Controls.Add(this.label5);
+            this.tabPage9.Controls.Add(this.groupBox1);
             this.tabPage9.Controls.Add(this.txtConfigKanmusuName);
             this.tabPage9.Controls.Add(this.label25);
             this.tabPage9.Location = new System.Drawing.Point(4, 26);
@@ -797,76 +808,15 @@
             this.tabPage9.Text = "config.ini";
             this.tabPage9.UseVisualStyleBackColor = true;
             // 
-            // cbLinkPoses
+            // btnIniPosEdit
             // 
-            this.cbLinkPoses.AutoSize = true;
-            this.cbLinkPoses.Enabled = false;
-            this.cbLinkPoses.Location = new System.Drawing.Point(256, 106);
-            this.cbLinkPoses.Name = "cbLinkPoses";
-            this.cbLinkPoses.Size = new System.Drawing.Size(50, 21);
-            this.cbLinkPoses.TabIndex = 8;
-            this.cbLinkPoses.Text = "Link";
-            this.cbLinkPoses.UseVisualStyleBackColor = true;
-            // 
-            // btnEditEqipVDPos
-            // 
-            this.btnEditEqipVDPos.Enabled = false;
-            this.btnEditEqipVDPos.Location = new System.Drawing.Point(29, 241);
-            this.btnEditEqipVDPos.Name = "btnEditEqipVDPos";
-            this.btnEditEqipVDPos.Size = new System.Drawing.Size(207, 29);
-            this.btnEditEqipVDPos.TabIndex = 7;
-            this.btnEditEqipVDPos.Text = "编辑改装立绘位置";
-            this.btnEditEqipVDPos.UseVisualStyleBackColor = true;
-            // 
-            // btnEditExerciseVDPos
-            // 
-            this.btnEditExerciseVDPos.Enabled = false;
-            this.btnEditExerciseVDPos.Location = new System.Drawing.Point(29, 206);
-            this.btnEditExerciseVDPos.Name = "btnEditExerciseVDPos";
-            this.btnEditExerciseVDPos.Size = new System.Drawing.Size(207, 29);
-            this.btnEditExerciseVDPos.TabIndex = 6;
-            this.btnEditExerciseVDPos.Text = "编辑演习立绘位置";
-            this.btnEditExerciseVDPos.UseVisualStyleBackColor = true;
-            // 
-            // btnEditMapVDPos
-            // 
-            this.btnEditMapVDPos.Enabled = false;
-            this.btnEditMapVDPos.Location = new System.Drawing.Point(29, 171);
-            this.btnEditMapVDPos.Name = "btnEditMapVDPos";
-            this.btnEditMapVDPos.Size = new System.Drawing.Size(207, 29);
-            this.btnEditMapVDPos.TabIndex = 5;
-            this.btnEditMapVDPos.Text = "编辑出击（海图中）立绘位置";
-            this.btnEditMapVDPos.UseVisualStyleBackColor = true;
-            // 
-            // btnEditRemodelVDPos
-            // 
-            this.btnEditRemodelVDPos.Enabled = false;
-            this.btnEditRemodelVDPos.Location = new System.Drawing.Point(30, 136);
-            this.btnEditRemodelVDPos.Name = "btnEditRemodelVDPos";
-            this.btnEditRemodelVDPos.Size = new System.Drawing.Size(207, 29);
-            this.btnEditRemodelVDPos.TabIndex = 4;
-            this.btnEditRemodelVDPos.Text = "编辑近代化改修立绘位置";
-            this.btnEditRemodelVDPos.UseVisualStyleBackColor = true;
-            // 
-            // btnEditBattleVDPos
-            // 
-            this.btnEditBattleVDPos.Enabled = false;
-            this.btnEditBattleVDPos.Location = new System.Drawing.Point(30, 101);
-            this.btnEditBattleVDPos.Name = "btnEditBattleVDPos";
-            this.btnEditBattleVDPos.Size = new System.Drawing.Size(207, 29);
-            this.btnEditBattleVDPos.TabIndex = 3;
-            this.btnEditBattleVDPos.Text = "编辑战斗立绘位置";
-            this.btnEditBattleVDPos.UseVisualStyleBackColor = true;
-            // 
-            // btnEditPortVDPos
-            // 
-            this.btnEditPortVDPos.Enabled = false;
-            this.btnEditPortVDPos.Location = new System.Drawing.Point(30, 66);
-            this.btnEditPortVDPos.Name = "btnEditPortVDPos";
-            this.btnEditPortVDPos.Size = new System.Drawing.Size(207, 29);
-            this.btnEditPortVDPos.TabIndex = 2;
-            this.btnEditPortVDPos.Text = "编辑母港立绘位置";
-            this.btnEditPortVDPos.UseVisualStyleBackColor = true;
+            this.btnIniPosEdit.Location = new System.Drawing.Point(300, 33);
+            this.btnIniPosEdit.Name = "btnIniPosEdit";
+            this.btnIniPosEdit.Size = new System.Drawing.Size(111, 28);
+            this.btnIniPosEdit.TabIndex = 2;
+            this.btnIniPosEdit.Text = "编辑";
+            this.btnIniPosEdit.UseVisualStyleBackColor = true;
+            this.btnIniPosEdit.Click += new System.EventHandler(this.btnEditPortVDPos_Click);
             // 
             // txtConfigKanmusuName
             // 
@@ -937,15 +887,75 @@
             // 
             this.saveIni.Filter = "配置文件|*.ini";
             // 
-            // btnPreview
+            // groupBox1
             // 
-            this.btnPreview.Location = new System.Drawing.Point(263, 55);
-            this.btnPreview.Name = "btnPreview";
-            this.btnPreview.Size = new System.Drawing.Size(89, 26);
-            this.btnPreview.TabIndex = 28;
-            this.btnPreview.Text = "Preview";
-            this.btnPreview.UseVisualStyleBackColor = true;
-            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
+            this.groupBox1.Controls.Add(this.btnIniPosEdit);
+            this.groupBox1.Controls.Add(this.cbIniPosEditContent);
+            this.groupBox1.Location = new System.Drawing.Point(23, 52);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(576, 81);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "编辑立绘位置";
+            // 
+            // cbIniPosEditContent
+            // 
+            this.cbIniPosEditContent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbIniPosEditContent.FormattingEnabled = true;
+            this.cbIniPosEditContent.Items.AddRange(new object[] {
+            "母港立绘",
+            "战斗立绘",
+            "海域地图（出击中）立绘",
+            "演习立绘",
+            "近代化改修立绘",
+            "改造界面立绘"});
+            this.cbIniPosEditContent.Location = new System.Drawing.Point(22, 35);
+            this.cbIniPosEditContent.Name = "cbIniPosEditContent";
+            this.cbIniPosEditContent.Size = new System.Drawing.Size(272, 25);
+            this.cbIniPosEditContent.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(26, 148);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 17);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "配置文件名";
+            // 
+            // txtIniFileName
+            // 
+            this.txtIniFileName.Location = new System.Drawing.Point(128, 145);
+            this.txtIniFileName.Name = "txtIniFileName";
+            this.txtIniFileName.Size = new System.Drawing.Size(246, 23);
+            this.txtIniFileName.TabIndex = 10;
+            // 
+            // btnIniSave
+            // 
+            this.btnIniSave.Location = new System.Drawing.Point(462, 243);
+            this.btnIniSave.Name = "btnIniSave";
+            this.btnIniSave.Size = new System.Drawing.Size(137, 30);
+            this.btnIniSave.TabIndex = 29;
+            this.btnIniSave.Text = "保存配置文件";
+            this.btnIniSave.UseVisualStyleBackColor = true;
+            // 
+            // btnTxtIniFileNameHelp
+            // 
+            this.btnTxtIniFileNameHelp.Location = new System.Drawing.Point(374, 144);
+            this.btnTxtIniFileNameHelp.Name = "btnTxtIniFileNameHelp";
+            this.btnTxtIniFileNameHelp.Size = new System.Drawing.Size(26, 24);
+            this.btnTxtIniFileNameHelp.TabIndex = 30;
+            this.btnTxtIniFileNameHelp.Text = "?";
+            this.btnTxtIniFileNameHelp.UseVisualStyleBackColor = true;
+            // 
+            // btnIniPreview
+            // 
+            this.btnIniPreview.Location = new System.Drawing.Point(319, 243);
+            this.btnIniPreview.Name = "btnIniPreview";
+            this.btnIniPreview.Size = new System.Drawing.Size(137, 30);
+            this.btnIniPreview.TabIndex = 31;
+            this.btnIniPreview.Text = "预览配置文件";
+            this.btnIniPreview.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1000,6 +1010,7 @@
             this.tabPage9.ResumeLayout(false);
             this.tabPage9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1061,13 +1072,7 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.PictureBox RemodelNormal;
         private System.Windows.Forms.TabPage tabPage9;
-        private System.Windows.Forms.CheckBox cbLinkPoses;
-        private System.Windows.Forms.Button btnEditEqipVDPos;
-        private System.Windows.Forms.Button btnEditExerciseVDPos;
-        private System.Windows.Forms.Button btnEditMapVDPos;
-        private System.Windows.Forms.Button btnEditRemodelVDPos;
-        private System.Windows.Forms.Button btnEditBattleVDPos;
-        private System.Windows.Forms.Button btnEditPortVDPos;
+        private System.Windows.Forms.Button btnIniPosEdit;
         private System.Windows.Forms.TextBox txtConfigKanmusuName;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.OpenFileDialog openImage;
@@ -1085,6 +1090,13 @@
         private System.Windows.Forms.SaveFileDialog saveIni;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnPreview;
+        private System.Windows.Forms.Button btnTxtIniFileNameHelp;
+        private System.Windows.Forms.Button btnIniSave;
+        private System.Windows.Forms.TextBox txtIniFileName;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox cbIniPosEditContent;
+        private System.Windows.Forms.Button btnIniPreview;
     }
 }
 

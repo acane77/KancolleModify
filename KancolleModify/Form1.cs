@@ -56,6 +56,17 @@ namespace KancolleModify
             };
 
             txtKanmusuID.LostFocus += btnPreview_Click;
+
+            /// config.ini界面
+            cbIniPosEditContent.SelectedIndex = 0;
+            txtIniFileName.LostFocus += (object s, EventArgs ee) =>
+            {
+                if (txtIniFileName.Text.EndsWith(".config.ini") || txtIniFileName.Text.Length == 0)
+                    return;
+                if (txtIniFileName.Text.EndsWith(".ini"))
+                    txtIniFileName.Text.Replace(".ini", "");
+                txtIniFileName.Text += ".config.ini";
+            };
         }
 
         private string LoadConfig(string item)
@@ -443,6 +454,12 @@ namespace KancolleModify
             }
             frmPreview.ConditionalShow();
             this.Focus();
+        }
+
+        private void btnEditPortVDPos_Click(object sender, EventArgs e)
+        {
+            FrmUIEdit frmUIEdit = new FrmUIEdit();
+            frmUIEdit.Show();
         }
     }
 }
