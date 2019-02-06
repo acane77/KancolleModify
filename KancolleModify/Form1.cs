@@ -465,11 +465,21 @@ namespace KancolleModify
                 frmUIEdit.NormalVD = (Image)VertDrawingNormal.BackgroundImage?.Clone();
                 frmUIEdit.DamageVD = (Image)VertDrawingDmg.BackgroundImage?.Clone();
                 frmUIEdit.CheckArguments();
+                AddAdditionalArguments(frmUIEdit);
                 frmUIEdit.Show();
             }
             catch (Exception ee)
             {
                 MessageBox.Show(ee.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        void AddAdditionalArguments(FrmUIEdit frm)
+        {
+            if (frm.VertialDrawingSense == VertialDrawingSenses.InBattle)
+            {
+                if (Fleet1NamePlateNormal.BackgroundImage != null)
+                    frm.AddAdditionalImage((Image)Fleet1NamePlateNormal.BackgroundImage.Clone(), new Point(0, 80), new Size(160, 42));
             }
         }
     }

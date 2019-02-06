@@ -20,7 +20,7 @@ namespace KancolleModify
             {
                 VDInfo = new Dictionary<VertialDrawingSenses, VDAttributes>();
                 VDInfo.Add(VertialDrawingSenses.Port, new VDAttributes(KancolleModify.Properties.Resources.port.GetHbitmap(), "boko", new Point(491, -88), (2.0 / 3.0)));
-                //ImageResources.Add(VertialDrawingSenses.InBattle, new VDAttributes(KancolleModify.Properties.Resources.port.GetHbitmap(), "battle", Point.Empty));
+                VDInfo.Add(VertialDrawingSenses.InBattle, new VDAttributes(KancolleModify.Properties.Resources.battle.GetHbitmap(), "battle", Point.Empty, (2.0 / 3.0)));
                 //ImageResources.Add(VertialDrawingSenses.Map, new VDAttributes(KancolleModify.Properties.Resources.port.GetHbitmap(), "map", Point.Empty));
                 //ImageResources.Add(VertialDrawingSenses.Exercise, new VDAttributes(KancolleModify.Properties.Resources.port.GetHbitmap(), "ensyuf", Point.Empty));
                 //ImageResources.Add(VertialDrawingSenses.Modernization, new VDAttributes(KancolleModify.Properties.Resources.port.GetHbitmap(), "kaisyu", Point.Empty));
@@ -102,6 +102,22 @@ namespace KancolleModify
             }
         }
 
+        class AddtionalImage
+        {
+            public Image Image;
+            public Point Position;
+            public Size  Size;
+
+            public AddtionalImage(Image image, Point position, Size size)
+            {
+                Image = image;
+                Position = position;
+                Size = size;
+            }
+        }
+
+        private List<AddtionalImage> AdditionalImages = new List<AddtionalImage>();
+
         private static Dictionary<VertialDrawingSenses, VDAttributes> VDInfo = null;
 
         //public string CurrentEdit
@@ -127,6 +143,11 @@ namespace KancolleModify
                 throw new ArgumentException("需要选择至少一个立绘，才能使用此功能。");
         }
 
+        public void AddAdditionalImage(Image image, Point location, Size size)
+        {
+            AdditionalImages.Add(new AddtionalImage(image, location, size));
+        }
+
         Point AddPoints(Point p1, Point p2)
         {
             return new Point(p1.X + p2.X, p1.Y + p2.Y);
@@ -137,13 +158,17 @@ namespace KancolleModify
             Graphics G = e.Graphics;
             if (_BackgroudImage != null)
                 G.DrawImage(_BackgroudImage, new Point(0, 0));
+
+            foreach (AddtionalImage image in AdditionalImages)
+                G.DrawImage(image.Image, image.Position.X, image.Position.Y, image.Size.Width, image.Size.Height);
+
             if (RendereedVD != null)
                 G.DrawImage(RendereedVD,
                     CurrentVD.BasePosition.X + VertialDrawingLocation.X,
                     CurrentVD.BasePosition.Y + VertialDrawingLocation.Y,
                     (int)(RendereedVD.Width * CurrentVD.ZoomScale),
                     (int)(RendereedVD.Height * CurrentVD.ZoomScale)
-                    );
+                    ); 
         }
 
         /// <summary>
@@ -225,6 +250,7 @@ namespace KancolleModify
                     t.Dispose();
                 }
                 _BackgroudImage = Image.FromHbitmap(VDInfo[value].BackgroundImage);
+                _VertialDrawingSense = value;
             }
         }
 
@@ -269,8 +295,7 @@ namespace KancolleModify
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if (ConfirmBeforeClose(sender))
-                Close();
+            Close();
         }
 
         bool ConfirmBeforeClose(object sender)
