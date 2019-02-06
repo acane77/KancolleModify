@@ -481,6 +481,10 @@ namespace KancolleModify
                 if (Fleet1NamePlateNormal.BackgroundImage != null)
                     frm.AddAdditionalImage((Image)Fleet1NamePlateNormal.BackgroundImage.Clone(), new Point(0, 80), new Size(160, 42));
             }
+            else if (frm.VertialDrawingSense == VertialDrawingSenses.Map)
+            {
+                frm.AddAdditionalImageOver(Utils.GetImageFromByteArray(KancolleModify.Properties.Resources.map_bottom_banner), new Point(0, 293), new Size(800, 187)); ;
+            }
         }
     }
 }

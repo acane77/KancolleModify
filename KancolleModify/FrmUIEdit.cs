@@ -21,7 +21,7 @@ namespace KancolleModify
                 VDInfo = new Dictionary<VertialDrawingSenses, VDAttributes>();
                 VDInfo.Add(VertialDrawingSenses.Port, new VDAttributes(KancolleModify.Properties.Resources.port.GetHbitmap(), "boko", new Point(491, -88), (2.0 / 3.0)));
                 VDInfo.Add(VertialDrawingSenses.InBattle, new VDAttributes(KancolleModify.Properties.Resources.battle.GetHbitmap(), "battle", Point.Empty, (2.0 / 3.0)));
-                //ImageResources.Add(VertialDrawingSenses.Map, new VDAttributes(KancolleModify.Properties.Resources.port.GetHbitmap(), "map", Point.Empty));
+                VDInfo.Add(VertialDrawingSenses.Map, new VDAttributes(KancolleModify.Properties.Resources.map_main.GetHbitmap(), "map", Point.Empty, (2.0 / 3.0)));
                 //ImageResources.Add(VertialDrawingSenses.Exercise, new VDAttributes(KancolleModify.Properties.Resources.port.GetHbitmap(), "ensyuf", Point.Empty));
                 //ImageResources.Add(VertialDrawingSenses.Modernization, new VDAttributes(KancolleModify.Properties.Resources.port.GetHbitmap(), "kaisyu", Point.Empty));
                 //ImageResources.Add(VertialDrawingSenses.Remodel, new VDAttributes(KancolleModify.Properties.Resources.port.GetHbitmap(), "kaizo", Point.Empty));
@@ -117,6 +117,7 @@ namespace KancolleModify
         }
 
         private List<AddtionalImage> AdditionalImages = new List<AddtionalImage>();
+        private List<AddtionalImage> AdditionalImagesOver = new List<AddtionalImage>();
 
         private static Dictionary<VertialDrawingSenses, VDAttributes> VDInfo = null;
 
@@ -148,6 +149,11 @@ namespace KancolleModify
             AdditionalImages.Add(new AddtionalImage(image, location, size));
         }
 
+        public void AddAdditionalImageOver(Image image, Point location, Size size)
+        {
+            AdditionalImagesOver.Add(new AddtionalImage(image, location, size));
+        }
+
         Point AddPoints(Point p1, Point p2)
         {
             return new Point(p1.X + p2.X, p1.Y + p2.Y);
@@ -168,7 +174,10 @@ namespace KancolleModify
                     CurrentVD.BasePosition.Y + VertialDrawingLocation.Y,
                     (int)(RendereedVD.Width * CurrentVD.ZoomScale),
                     (int)(RendereedVD.Height * CurrentVD.ZoomScale)
-                    ); 
+                    );
+
+            foreach (AddtionalImage image in AdditionalImagesOver)
+                G.DrawImage(image.Image, image.Position.X, image.Position.Y, image.Size.Width, image.Size.Height);
         }
 
         /// <summary>
@@ -276,13 +285,18 @@ namespace KancolleModify
             }
         }
 
+        int RestoreScale(int x)
+        {
+            return (int)(x / CurrentVD.ZoomScale);
+        }
+
         private void btnIniText_Click(object sender, EventArgs e)
         {
             string ini = "";
-            ini += CurrentVD.ConfigStringPrefix + "_d_left=" + _VD_Location_D.X + "\r\n";
-            ini += CurrentVD.ConfigStringPrefix + "_d_top=" + _VD_Location_D.Y + "\r\n";
-            ini += CurrentVD.ConfigStringPrefix + "_n_left=" + _VD_Location_N.X + "\r\n";
-            ini += CurrentVD.ConfigStringPrefix + "_n_top=" + _VD_Location_N.Y + "\r\n";
+            ini += CurrentVD.ConfigStringPrefix + "_d_left=" + RestoreScale(_VD_Location_D.X) + "\r\n";
+            ini += CurrentVD.ConfigStringPrefix + "_d_top=" + RestoreScale(_VD_Location_D.Y) + "\r\n";
+            ini += CurrentVD.ConfigStringPrefix + "_n_left=" + RestoreScale(_VD_Location_N.X) + "\r\n";
+            ini += CurrentVD.ConfigStringPrefix + "_n_top=" + RestoreScale(_VD_Location_N.Y) + "\r\n";
 
             MessageBox.Show(ini);
 

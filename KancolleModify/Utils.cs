@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,15 @@ namespace KancolleModify
             return lst;
         }
 
-        
+        public static Image GetImageFromByteArray(byte[] A)
+        {
+            Image image = null;
+            using (var ms = new MemoryStream(KancolleModify.Properties.Resources.map_bottom_banner))
+            {
+                image = Image.FromStream(ms);
+            }
+            return image;
+        }
+
     }
 }

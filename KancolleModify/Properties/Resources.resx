@@ -121,6 +121,12 @@
   <data name="battle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\battle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="map_bottom_banner" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\map_bottom_banner;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="map_main" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\map_main.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="port" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\port.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
