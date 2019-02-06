@@ -134,6 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="Resources\remodel.png" />
     <None Include="Resources\map_bottom_banner" />
     <None Include="Resources\map_main.png" />
     <None Include="Resources\map_bottom_banner.png" />

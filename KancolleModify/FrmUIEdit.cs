@@ -23,8 +23,8 @@ namespace KancolleModify
                 VDInfo.Add(VertialDrawingSenses.InBattle, new VDAttributes(KancolleModify.Properties.Resources.battle.GetHbitmap(), "battle", Point.Empty, (2.0 / 3.0)));
                 VDInfo.Add(VertialDrawingSenses.Map, new VDAttributes(KancolleModify.Properties.Resources.map_main.GetHbitmap(), "map", Point.Empty, (2.0 / 3.0)));
                 //ImageResources.Add(VertialDrawingSenses.Exercise, new VDAttributes(KancolleModify.Properties.Resources.port.GetHbitmap(), "ensyuf", Point.Empty));
-                //ImageResources.Add(VertialDrawingSenses.Modernization, new VDAttributes(KancolleModify.Properties.Resources.port.GetHbitmap(), "kaisyu", Point.Empty));
-                //ImageResources.Add(VertialDrawingSenses.Remodel, new VDAttributes(KancolleModify.Properties.Resources.port.GetHbitmap(), "kaizo", Point.Empty));
+                VDInfo.Add(VertialDrawingSenses.Modernization, new VDAttributes(KancolleModify.Properties.Resources.remodel.GetHbitmap(), "kaisyu", Point.Empty, (2.0 / 3.0)));
+                VDInfo.Add(VertialDrawingSenses.Remodel, new VDAttributes(KancolleModify.Properties.Resources.remodel.GetHbitmap(), "kaizo", Point.Empty, (2.0 / 3.0)));
             }
 
             numPosLeft.ValueChanged += (s, ee) =>
