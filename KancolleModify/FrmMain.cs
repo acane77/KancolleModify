@@ -532,11 +532,11 @@ namespace KancolleModify
 
         private void btnIniLoadConfig_Click(object sender, EventArgs e)
         {
-            Config.ConfigIni.Clear();
             try
             {
                 if (openIni.ShowDialog() != DialogResult.OK)
                     return;
+                Config.ConfigIni.Clear();
                 txtIniFileName.Text = Path.GetFileName(openIni.FileName);
                 IniConfigLoader iniConfig = new IniConfigLoader(openIni.FileName);
                 Dictionary<string, string> group = iniConfig.GetConfigByGroupName("graph");
