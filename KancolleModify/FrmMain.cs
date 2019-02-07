@@ -154,17 +154,6 @@ namespace KancolleModify
                 () => { RemodelDmg.BackgroundImage = RemodelNormal.BackgroundImage; },
                 () => { },
             };
-            ClearHandlers = new ActionHandler[]
-            {
-                () => { Fleet1NamePlateNormal.BackgroundImage = Fleet1NamePlateDmg.BackgroundImage = Fleet1NamePlateLost.BackgroundImage = 
-                    Fleet2NamePlateNormal.BackgroundImage = Fleet2NamePlateDmg.BackgroundImage = Fleet2NamePlateLost.BackgroundImage = null;  },
-                () => { SupplyDmg.BackgroundImage = SupplyNormal.BackgroundImage = null; },
-                () => { CardNormal.BackgroundImage = CardDmg.BackgroundImage = null; },
-                () => { AlbumFullDmg.BackgroundImage = AlbumFull.BackgroundImage = AlbumHalfDmg.BackgroundImage = AlbumHalf.BackgroundImage = null; },
-                () => { VertDrawingDmg.BackgroundImage = VertDrawingNormal.BackgroundImage = null; },
-                () => { RemodelDmg.BackgroundImage = RemodelNormal.BackgroundImage = null; },
-                () => { },
-            };
         }
 
         private void LoadImage(string where, PictureBox pictureBox)
@@ -187,6 +176,15 @@ namespace KancolleModify
             }
         }
 
+        private void RemoveImageFromPictureBox(PictureBox pictureBox)
+        {
+            if (pictureBox.BackgroundImage == null)
+                return;
+            Image image = pictureBox.BackgroundImage;
+            pictureBox.Image = null;
+            image.Dispose();
+        }
+
         private void btnCopyFleet_Click(object sender, EventArgs e)
         {
             if (ValueCheckers[tabResTypes.SelectedIndex]())
@@ -198,9 +196,17 @@ namespace KancolleModify
 
         private void btnClearFleet_Click(object sender, EventArgs e)
         {
-            if (ValueCheckers[tabResTypes.SelectedIndex]())
+            foreach (var ctrl in tabResTypes.SelectedTab.Controls)
             {
-                ClearHandlers[tabResTypes.SelectedIndex]();
+                if (ctrl is PictureBox)
+                {
+                    ((PictureBox)ctrl).BackgroundImage = null;
+                    GC.Collect();
+                }
+                else if (ctrl is TextBox)
+                {
+                    ((TextBox)ctrl).Text = "";
+                }
             }
         }
 
@@ -425,6 +431,7 @@ namespace KancolleModify
                     pic.BackgroundImage = null;
                 }
             }
+            GC.Collect();
         }
 
         private void btnReset_Click(object sender, EventArgs e)

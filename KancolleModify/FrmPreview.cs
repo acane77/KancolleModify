@@ -36,6 +36,7 @@ namespace KancolleModify
             try
             {
                 image = Image.FromFile(path + files[0]);
+                GC.Collect();
                 Preview.Image = image;
                 Preview.SizeMode = PictureBoxSizeMode.Zoom;
             }

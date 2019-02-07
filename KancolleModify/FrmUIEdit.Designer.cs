@@ -112,7 +112,7 @@
             this.btnSave.Location = new System.Drawing.Point(26, 408);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(130, 27);
-            this.btnSave.TabIndex = 16;
+            this.btnSave.TabIndex = 0;
             this.btnSave.Text = "保存(&S)";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -290,6 +290,7 @@
             this.ShowIcon = false;
             this.Text = "编辑坐标位置";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmUIEdit_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmUIEdit_FormClosed);
             this.Load += new System.EventHandler(this.FrmUIEdit_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

@@ -379,6 +379,11 @@ namespace KancolleModify
             e.Cancel = !ConfirmBeforeClose(sender);
         }
 
+        private void FrmUIEdit_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            GC.Collect();
+        }
+
         private void LoadPositionFromConfig()
         {
             if (Config.ConfigIni.ContainsKey(CurrentVD.ConfigStringPrefix + "_d_left") &&
